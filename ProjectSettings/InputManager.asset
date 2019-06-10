@@ -297,9 +297,9 @@ InputManager:
     m_Name: Clockwise
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: down
     positiveButton: up
-    altNegativeButton: 
+    altNegativeButton: right
     altPositiveButton: left
     gravity: 1000
     dead: 0.001
@@ -313,9 +313,9 @@ InputManager:
     m_Name: CounterClockwise
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: up
     positiveButton: down
-    altNegativeButton: 
+    altNegativeButton: left
     altPositiveButton: right
     gravity: 1000
     dead: 0.001
