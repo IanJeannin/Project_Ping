@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PaddleMovement : MonoBehaviour
 {
-   
+    [Tooltip("Transform of the object.")]
     [SerializeField]
     private Transform paddle;
+    [Tooltip("Transform of the circle object rotates on.")]
     [SerializeField]
     private Transform track;
 
