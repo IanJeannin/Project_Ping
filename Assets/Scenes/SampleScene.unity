@@ -437,8 +437,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1527931993
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 30f91ae4e4094f64a8f9ef9da1ba3a64, type: 3}
   m_Color: {r: 0.5613208, g: 0.91140974, b: 1, a: 1}
@@ -491,6 +491,20 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 524320399214413564}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1684034637
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684034633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
 --- !u!1001 &524320399214413564
 PrefabInstance:
   m_ObjectHideFlags: 0

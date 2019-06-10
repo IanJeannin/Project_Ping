@@ -23,10 +23,7 @@ public class PaddleMovement : MonoBehaviour
         paddleXPos = Mathf.Cos(angle) * radius;
         paddleYPos = Mathf.Sin(angle) * radius;
         paddle.position = new Vector3(paddleXPos, paddleYPos);
-        directionOfRotation = track.position - paddle.position;
-        float rotationAngle = Mathf.Atan2(directionOfRotation.y, directionOfRotation.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
+        transform.up = track.position - paddle.position; //Sets paddle rotation to face center of circle
     }
 
     public void MoveClockwise()
