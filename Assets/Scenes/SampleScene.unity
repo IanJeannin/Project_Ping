@@ -522,9 +522,10 @@ MonoBehaviour:
   startingPause: 1
   ballTransform: {fileID: 1531068168}
   ballRigidbody: {fileID: 1531068164}
-  timeBetweenSpeedIncrease: 10
-  speed: 2
-  maxSpeed: 0
+  speed: 1
+  speedIncrease: 0.2
+  maxSpeed: 2.2
+  bouncesBeforeSpeedIncrease: 2
 --- !u!58 &1531068166
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -18,11 +18,20 @@ public class BallInitialMovement : MonoBehaviour
     private Rigidbody2D ballRigidbody;
     [Tooltip("The number of seconds before the ball becomes faster.")]
     [SerializeField]
-    private float timeBetweenSpeedIncrease;
-    [SerializeField]
     private float speed=1;
+    [Tooltip("By how much the speed will increase at each increment.")]
     [SerializeField]
-    private float maxSpeed;
+    private float speedIncrease = 0.2f;
+    [SerializeField]
+    private float maxSpeed=3;
+    [Tooltip("How many bounces before the ball increases in speed.")]
+    [SerializeField]
+    private float bouncesBeforeSpeedIncrease=2 ;
+
+    /// <summary>
+    /// Counts how many bounces have passed;
+    /// </summary>
+    private float numberOfBounces = 0;
 
     private void Start()
     {
@@ -50,6 +59,7 @@ public class BallInitialMovement : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            numberOfBounces++;
             Vector2 vel;
             Debug.Log("paddle x= " + collision.collider.attachedRigidbody.velocity.x);
             Debug.Log("paddle y= " + collision.collider.attachedRigidbody.velocity.y);
@@ -57,22 +67,19 @@ public class BallInitialMovement : MonoBehaviour
             Debug.Log("Ball x= " + vel.x);
             vel.y = (ballRigidbody.velocity.y / 2) + (collision.collider.attachedRigidbody.velocity.y / 3);
             Debug.Log("Ball y= " + vel.y);
-            ballRigidbody.velocity = vel;
+            if (numberOfBounces >= bouncesBeforeSpeedIncrease)
+            {
+                speed += speedIncrease;
+                ballRigidbody.velocity = vel*speed;
+                numberOfBounces = 0;
+            }
+            else
+            {
+                ballRigidbody.velocity = vel;
+            }
         }
     }
-
-    /// <summary>
-    /// Every timeBetweenSpeedIncrease number of seconds, increase speed of ball. 
-    /// </summary>
-    private IEnumerator IncreaseSpeedOfBall()
-    {
-        while (speed <= maxSpeed)
-        {
-            yield return new WaitForSeconds(timeBetweenSpeedIncrease);
-            speed += 0.2f;
-            ballRigidbody.velocity = ballRigidbody.velocity * speed;
-        }
-    }
+    
 
     
 }
