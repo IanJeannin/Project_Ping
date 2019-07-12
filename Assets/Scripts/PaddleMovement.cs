@@ -10,9 +10,11 @@ public class PaddleMovement : MonoBehaviour
     [Tooltip("Transform of the circle object rotates on.")]
     [SerializeField]
     private Transform track;
+    [SerializeField]
+    private Rigidbody2D paddleRigidbody;
 
     float angle = 0;
-    float speed = (2 * Mathf.PI) / 5; //2*PI in degress is 360, so you get 5 seconds to complete a circle
+    float speed = (2 * Mathf.PI) / 2.5f; //2*PI in degress is 360, so you get 5 seconds to complete a circle
     float radius = 5;
     private float paddleXPos;
     private float paddleYPos;
@@ -36,6 +38,7 @@ public class PaddleMovement : MonoBehaviour
         angle -= speed * Time.deltaTime; 
         paddleXPos = Mathf.Cos(angle) * radius;
         paddleYPos = Mathf.Sin(angle) * radius;
+        Rigidbody2D vel=paddleRigidbody;
         paddle.position = new Vector3(paddleXPos, paddleYPos);
     }
 

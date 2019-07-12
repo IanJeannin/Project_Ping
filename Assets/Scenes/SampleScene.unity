@@ -219,7 +219,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -394,10 +394,10 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365921573}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -519,9 +519,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOnePaddle: {fileID: 1684034636}
-  startingPause: 0
+  startingPause: 1
   ballTransform: {fileID: 1531068168}
   ballRigidbody: {fileID: 1531068164}
+  timeBetweenSpeedIncrease: 10
+  speed: 2
+  maxSpeed: 0
 --- !u!58 &1531068166
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -595,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 1531068163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -620,26 +623,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddle: {fileID: 1684034636}
   track: {fileID: 1365921576}
+  paddleRigidbody: {fileID: 1684034637}
 --- !u!4 &1684034636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6823411138468918071, guid: 32605da90e1f15d45858b898010114bc,
     type: 3}
   m_PrefabInstance: {fileID: 524320399214413564}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1684034637
-MeshCollider:
+--- !u!50 &1684034637
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684034633}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &1684034638
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684034633}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &524320399214413564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -651,6 +688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Paddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895900664236835127, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6823411138468918071, guid: 32605da90e1f15d45858b898010114bc,
         type: 3}
@@ -731,6 +773,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071602638369787449, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6651835109083228543, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057036035772825668, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a5636b9d4eb07284fb6ca79828a52ba4, type: 2}
+    - target: {fileID: 1057036035772825668, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236350185736521762, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343164739270993445, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a5636b9d4eb07284fb6ca79828a52ba4, type: 2}
+    - target: {fileID: 4343164739270993445, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325620372733035859, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004183535305889229, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a5636b9d4eb07284fb6ca79828a52ba4, type: 2}
+    - target: {fileID: 6004183535305889229, guid: 32605da90e1f15d45858b898010114bc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32605da90e1f15d45858b898010114bc, type: 3}
